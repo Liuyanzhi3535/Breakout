@@ -10,45 +10,53 @@ function Box(x, y, width, height, color, borderRadius) {
 }
 
 Box.prototype = {
-  stroke: function (cxt) {
-    cxt.save();
-    cxt.strokeStyle = this.color;
-    cxt.beginPath();
+  stroke: function (ctx) {
+    ctx.save();
+    ctx.strokeStyle = this.color;
+    ctx.beginPath();
 
     if (this.borderRadius > 0) {
-      createRoundRect.bind(this)(cxt);
+      createRoundRect.bind(this)(ctx);
     } else {
-      cxt.rect(this.x, this.y, this.width, this.height);
+      createRect.bind(this)(ctx);
     }
 
-    cxt.closePath();
-    cxt.stroke();
-    cxt.restore();
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
   },
-  fill: function (cxt) {
-    cxt.save();
-    cxt.fillStyle = this.color;
-    cxt.beginPath();
+  fill: function (ctx) {
+    ctx.save();
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
 
     if (this.borderRadius > 0) {
-      createRoundRect.bind(this)(cxt);
+      createRoundRect.bind(this)(ctx);
     } else {
-      cxt.rect(this.x, this.y, this.width, this.height);
+      createRect.bind(this)(ctx);
     }
 
-    cxt.closePath();
-    cxt.fill();
-    cxt.restore();
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
   },
 };
 
-function createRoundRect(cxt) {
-  cxt.translate(this.x, this.y);
+function createRect(ctx) {
+  ctx.translate(this.x, this.y);
+  ctx.moveTo(-(this.width / 2), -(this.height / 2));
+  ctx.lineTo(this.width / 2, -(this.height / 2));
+  ctx.lineTo(this.width / 2, this.height / 2);
+  ctx.lineTo(-(this.width / 2), this.height / 2);
+}
 
-  cxt.moveTo(-(this.width / 2) + this.borderRadius, -(this.height / 2));
+function createRoundRect(ctx) {
+  ctx.translate(this.x, this.y);
 
-  cxt.lineTo(this.width / 2 - this.borderRadius, -(this.height / 2));
-  cxt.arcTo(
+  ctx.moveTo(-(this.width / 2) + this.borderRadius, -(this.height / 2));
+
+  ctx.lineTo(this.width / 2 - this.borderRadius, -(this.height / 2));
+  ctx.arcTo(
     this.width / 2,
     -(this.height / 2),
     this.width / 2,
@@ -56,8 +64,8 @@ function createRoundRect(cxt) {
     this.borderRadius
   );
 
-  cxt.lineTo(this.width / 2, this.height / 2 - this.borderRadius);
-  cxt.arcTo(
+  ctx.lineTo(this.width / 2, this.height / 2 - this.borderRadius);
+  ctx.arcTo(
     this.width / 2,
     this.height / 2,
     this.width / 2 - this.borderRadius,
@@ -65,8 +73,8 @@ function createRoundRect(cxt) {
     this.borderRadius
   );
 
-  cxt.lineTo(-this.width / 2 + this.borderRadius, this.height / 2);
-  cxt.arcTo(
+  ctx.lineTo(-this.width / 2 + this.borderRadius, this.height / 2);
+  ctx.arcTo(
     -this.width / 2,
     this.height / 2,
     -this.width / 2,
@@ -74,8 +82,8 @@ function createRoundRect(cxt) {
     this.borderRadius
   );
 
-  cxt.lineTo(-this.width / 2, -this.height / 2 + this.borderRadius);
-  cxt.arcTo(
+  ctx.lineTo(-this.width / 2, -this.height / 2 + this.borderRadius);
+  ctx.arcTo(
     -this.width / 2,
     -this.height / 2,
     -this.width / 2 + this.borderRadius,

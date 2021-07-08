@@ -11,25 +11,25 @@ function Ball(x, y, radius, color) {
 }
 
 Ball.prototype = {
-  stroke: function (cxt) {
-    cxt.save();
-    cxt.scale(this.scaleX, this.scaleY);
-    cxt.strokeStyle = this.color;
-    cxt.beginPath();
-    cxt.arc(this.x, this.y, this.radius, 0, (360 * Math.PI) / 180, false);
-    cxt.closePath();
-    cxt.stroke();
-    cxt.restore();
+  stroke: function (ctx) {
+    ctx.save();
+    ctx.scale(this.scaleX, this.scaleY);
+    ctx.strokeStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, (360 * Math.PI) / 180, false);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
   },
-  fill: function (cxt) {
-    cxt.save();
-    cxt.translate(this.x, this.y);
-    cxt.fillStyle = this.color;
-    cxt.beginPath();
-    cxt.arc(0, 0, this.radius, 0, (360 * Math.PI) / 180, false);
-    cxt.closePath();
-    cxt.fill();
-    cxt.restore();
+  fill: function (ctx) {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(0, 0, this.radius, 0, (360 * Math.PI) / 180, false);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
   },
   getRect: function () {
     return {

@@ -9,11 +9,11 @@ function Scoreboard(x, y, score) {
 }
 
 Scoreboard.prototype = {
-  fill: function (cxt) {
-    cxt.save();
-    cxt.textAlign = this.align;
-    cxt.font = this.font;
-    cxt.fillText(this.score, this.x, this.y);
-    cxt.restore();
+  fill: function (ctx) {
+    ctx.save();
+    ctx.textAlign = this.align;
+    ctx.font = this.font;
+    ctx.fillText(this.score, this.x, this.y);
+    ctx.restore();
   },
 };
