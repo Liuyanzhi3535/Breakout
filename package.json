@@ -1,0 +1,24 @@
+{
+  "name": "breakout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "breakout.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^7.2.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "source-map-loader": "^3.0.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

@@ -1,11 +1,13 @@
-#stage {
-  background: #eee;
+canvas {
   border: 1px solid #ddd;
+  background-color: #fff;
 }
 
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
